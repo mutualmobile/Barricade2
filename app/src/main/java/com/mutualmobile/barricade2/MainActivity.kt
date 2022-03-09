@@ -1,8 +1,5 @@
 package com.mutualmobile.barricade2
 
-import android.app.Activity
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -37,16 +34,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String) {
     val ctx = LocalContext.current
-    val activity = ctx as Activity
     Text(
         text = "Hello $name!",
         modifier = Modifier.clickable {
-            val intent = Intent(ctx.application, BarricadeConfigActivity::class.java)
-            intent.flags += Intent.FLAG_ACTIVITY_MULTIPLE_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                intent.flags += Intent.FLAG_ACTIVITY_LAUNCH_ADJACENT
-            }
-            activity.startActivity(intent)
+            Barricade.getInstance().launchConfigActivity(ctx)
         }
     )
 }

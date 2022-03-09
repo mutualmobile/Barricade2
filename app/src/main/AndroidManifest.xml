@@ -3,6 +3,7 @@
     package="com.mutualmobile.barricade2">
 
     <application
+        android:name=".B2Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
