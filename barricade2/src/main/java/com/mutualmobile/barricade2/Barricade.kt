@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import com.mutualmobile.barricade2.Barricade.Builder
+import com.mutualmobile.barricade2.utils.AndroidAssetFileManager
 import com.mutualmobile.barricade2.utils.AssetFileManager
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -21,7 +22,7 @@ import java.util.logging.Logger
  */
 class Barricade private constructor(
     private val barricadeConfig: IBarricadeConfig,
-    private val fileManager: AssetFileManager? = null
+    private val fileManager: AssetFileManager
 ) {
     /**
      * Change barricade status
@@ -53,11 +54,11 @@ class Barricade private constructor(
     }
 
     class Builder constructor(
-        private val context: Context,
+        context: Context,
         private val barricadeConfig: IBarricadeConfig
     ) {
         private var delay: Long = DEFAULT_DELAY
-        private var assetFileManager: AssetFileManager? = null
+        private var assetFileManager = AndroidAssetFileManager(context)
 
         fun setDelay(delay: Long) = apply { this.delay = delay }
 
@@ -141,7 +142,7 @@ class Barricade private constructor(
 
     private fun getResponseFromFile(endpoint: String, variant: String): String? {
         val fileName = ROOT_DIRECTORY + File.separator + endpoint + File.separator + variant
-        return fileManager?.getContentsOfFileAsString(fileName)
+        return fileManager.getContentsOfFileAsString(fileName)
     }
 
     fun launchConfigActivity(context: Context) {

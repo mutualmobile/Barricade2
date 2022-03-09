@@ -9,6 +9,6 @@ import java.io.InputStream
  * such as: folderName/childFolderName/filename
  */
 interface AssetFileManager {
-    fun getContentsOfFileAsString(fileName: String): String
-    fun getContentsOfFileAsStream(fileName: String): InputStream
+    fun getContentsOfFileAsString(fileName: String): String?
+    fun getContentsOfFileAsStream(fileName: String): InputStream?
 }
