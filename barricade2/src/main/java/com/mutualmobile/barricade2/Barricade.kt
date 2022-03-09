@@ -13,8 +13,6 @@ import okhttp3.ResponseBody.Companion.toResponseBody
 import java.io.File
 import java.util.logging.Logger
 
-private const val TAG = "Barricade"
-
 /**
  * Local server for your application.
  *
@@ -29,12 +27,14 @@ class Barricade private constructor(
      * Change barricade status
      * */
     var isEnabled: Boolean = true
+
     /**
      * How long should it take before returning API response.
      * */
     var delay: Long = DEFAULT_DELAY
 
     companion object {
+        const val TAG = "Barricade"
         private val logger = Logger.getLogger(TAG)
         private const val DEFAULT_DELAY: Long = 150
         private const val ROOT_DIRECTORY = "barricade"
