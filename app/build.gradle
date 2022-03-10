@@ -71,4 +71,6 @@ dependencies {
     implementation(project(":barricade2"))
     implementation(project(":barricade-annotations"))
     ksp(project(":barricade-compiler"))
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 }

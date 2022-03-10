@@ -6,7 +6,7 @@ package com.mutualmobile.barricade2.annotation
  */
 annotation class Response(
     val fileName: String,
-    val statusCode: Int,
+    val statusCode: Int = 200,
     val type: String = "application/json",
     val isDefault: Boolean = false
 )

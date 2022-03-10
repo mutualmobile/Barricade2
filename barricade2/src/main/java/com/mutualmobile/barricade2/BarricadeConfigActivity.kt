@@ -27,6 +27,11 @@ class BarricadeConfigActivity : ComponentActivity() {
             }
         }
     }
+
+    override fun onBackPressed() {
+        finishAndRemoveTask()
+        super.onBackPressed()
+    }
 }
 
 @Composable

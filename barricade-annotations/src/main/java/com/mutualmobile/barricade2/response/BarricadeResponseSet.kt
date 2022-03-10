@@ -6,5 +6,5 @@ package com.mutualmobile.barricade2.response
 data class BarricadeResponseSet(
     val responses: List<BarricadeResponse>,
     var defaultIndex: Int,
-    val originalDefaultIndex: Int
+    val originalDefaultIndex: Int = defaultIndex
 )
