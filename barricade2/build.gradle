@@ -64,4 +64,6 @@ dependencies {
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
+
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.3-alpha"
 }

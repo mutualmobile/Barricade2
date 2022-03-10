@@ -1,6 +1,7 @@
 package com.mutualmobile.barricade2.compiler.visitors
 
 import com.google.devtools.ksp.processing.KSPLogger
+import com.google.devtools.ksp.symbol.KSDeclaration
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
 import com.google.devtools.ksp.symbol.KSVisitorVoid
 import com.mutualmobile.barricade2.annotation.Barricade
@@ -28,7 +29,11 @@ class BarricadeVisitor(
 //        }.value as ArrayList<*>
 //
 //        val responses = responsesArgument.map {
-//            it as Response
+//            it as KSDeclaration
+//        }
+//
+//        responses.forEach { resp ->
+//            logger.error(resp.annotations.toString())
 //        }
 
 //        logger.error(responses.toString())
