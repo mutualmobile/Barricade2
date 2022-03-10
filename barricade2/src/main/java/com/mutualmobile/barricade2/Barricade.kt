@@ -27,7 +27,7 @@ class Barricade private constructor(
     /**
      * Change barricade status
      * */
-    var isEnabled: Boolean = true
+    var isEnabled: Boolean = false
 
     /**
      * How long should it take before returning API response.
