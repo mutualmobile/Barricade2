@@ -19,7 +19,7 @@ class BarricadeProcessor(
     private val options: Map<String, String>
 ) : SymbolProcessor {
     companion object {
-        private const val PACKAGE_NAME = "com.mutualmobile.barricade2"
+        const val PACKAGE_NAME = "com.mutualmobile.barricade2"
         private const val GENERATED_FILE_NAME = "BarricadeConfig"
     }
 
