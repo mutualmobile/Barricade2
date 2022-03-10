@@ -1,4 +1,4 @@
-package com.mutualmobile.compiler
+package com.mutualmobile.barricade2.compiler
 
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.processing.SymbolProcessorEnvironment

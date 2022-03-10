@@ -1,4 +1,4 @@
-package com.mutualmobile.compiler.visitors
+package com.mutualmobile.barricade2.compiler.visitors
 
 import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration

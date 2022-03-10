@@ -1,4 +1,4 @@
-package com.mutualmobile.compiler.utils
+package com.mutualmobile.barricade2.compiler.utils
 
 import java.io.OutputStream
 

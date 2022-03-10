@@ -1,4 +1,4 @@
-package com.mutualmobile.compiler
+package com.mutualmobile.barricade2.compiler
 
 import com.google.devtools.ksp.processing.CodeGenerator
 import com.google.devtools.ksp.processing.Dependencies
@@ -9,8 +9,8 @@ import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
 import com.google.devtools.ksp.validate
 import com.mutualmobile.barricade2.annotation.Barricade
-import com.mutualmobile.compiler.utils.writeToFile
-import com.mutualmobile.compiler.visitors.BarricadeVisitor
+import com.mutualmobile.barricade2.compiler.utils.writeToFile
+import com.mutualmobile.barricade2.compiler.visitors.BarricadeVisitor
 import java.io.OutputStream
 
 class BarricadeProcessor(
