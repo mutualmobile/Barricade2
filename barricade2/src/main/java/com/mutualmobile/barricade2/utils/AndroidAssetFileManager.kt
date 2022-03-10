@@ -1,6 +1,7 @@
 package com.mutualmobile.barricade2.utils
 
 import android.content.Context
+import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.util.logging.Logger
@@ -16,7 +17,7 @@ class AndroidAssetFileManager(private val applicationContext: Context) : AssetFi
     override fun getContentsOfFileAsString(fileName: String): String? {
         return try {
             val inputStream = getContentsOfFileAsStream(fileName)
-            inputStream?.readBytes()?.toString()
+            BufferedReader(inputStream?.reader()).readText()
         } catch (e: IOException) {
             Logger.getLogger(TAG).severe(e.message)
             null
