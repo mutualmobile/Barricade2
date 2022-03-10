@@ -19,7 +19,7 @@ class LandingScreenVM : ViewModel() {
     var jokeResponseState: ResponseState<JokeResponse> by mutableStateOf(ResponseState.Empty)
         private set
 
-    var jokeCategoriesState: ResponseState<JokeResponse> by mutableStateOf(ResponseState.Empty)
+    var jokeCategoriesState: ResponseState<List<String>> by mutableStateOf(ResponseState.Empty)
         private set
 
     private val barricade = Barricade.getInstance()
@@ -30,6 +30,7 @@ class LandingScreenVM : ViewModel() {
     }
 
     fun fetchJoke() {
+        jokeCategoriesState = ResponseState.Empty
         jokeResponseState = ResponseState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             val networkResponse = JokeApi.instance.getRandomJoke()
@@ -46,9 +47,19 @@ class LandingScreenVM : ViewModel() {
     }
 
     fun fetchJokeCategories() {
-        jokeCategoriesState = ResponseState.Loading
         jokeResponseState = ResponseState.Empty
+        jokeCategoriesState = ResponseState.Loading
         viewModelScope.launch(Dispatchers.IO) {
+            val networkResponse = JokeApi.instance.getJokeCategories()
+            if (networkResponse.isSuccessful) {
+                networkResponse.body()?.let { nnNetworkResponse ->
+                    jokeCategoriesState = ResponseState.Success(data = nnNetworkResponse)
+                } ?: run {
+                    jokeCategoriesState = ResponseState.Failure(reason = "Response body is empty")
+                }
+            } else {
+                jokeCategoriesState = ResponseState.Failure(reason = networkResponse.message())
+            }
         }
     }
 }

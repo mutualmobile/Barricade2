@@ -12,8 +12,15 @@ interface ApiService {
             com.mutualmobile.barricade2.annotation.Response(
                 fileName = "success.json",
                 isDefault = true
+            ),
+            com.mutualmobile.barricade2.annotation.Response(
+                fileName = "failure.json",
+                statusCode = 404
             )
         ]
     )
     suspend fun getRandomJoke(): Response<JokeResponse>
+
+    @GET("/jokes/categories")
+    suspend fun getJokeCategories(): Response<List<String>>
 }

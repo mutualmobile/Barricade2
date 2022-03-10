@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Card
@@ -48,6 +49,7 @@ fun LandingScreen(
     val ctx = LocalContext.current
     val barricade by remember { mutableStateOf(Barricade.getInstance()) }
     val currentJokeState = landingScreenVM.jokeResponseState
+    val currentJokeCategoriesState = landingScreenVM.jokeCategoriesState
     val isChecked = landingScreenVM.barricadeStatus
 
     Scaffold(
@@ -121,6 +123,39 @@ fun LandingScreen(
                     }
                     is ResponseState.Failure -> {
                         Text(jokeState.reason, color = MaterialTheme.colors.error)
+                    }
+                }
+            }
+            AnimatedContent(
+                targetState = currentJokeCategoriesState,
+                transitionSpec = { fadeIn() + slideInVertically() with fadeOut() },
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) { categoryState ->
+                when (categoryState) {
+                    is ResponseState.Empty -> {}
+                    is ResponseState.Loading -> {
+                        LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                    }
+                    is ResponseState.Success -> {
+                        LazyColumn(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            categoryState.data.forEach { jokeCategory ->
+                                item {
+                                    Text(
+                                        jokeCategory,
+                                        modifier = Modifier.padding(horizontal = 8.dp)
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    is ResponseState.Failure -> {
+                        Text(categoryState.reason, color = MaterialTheme.colors.error)
                     }
                 }
             }
