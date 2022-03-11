@@ -1,4 +1,4 @@
-package com.mutualmobile.barricade2.states
+package com.mutualmobile.barricadeSample.states
 
 sealed class ResponseState<out T> {
     object Empty : ResponseState<Nothing>()

@@ -45,13 +45,19 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.mutualmobile.barricade2.Barricade
 import com.mutualmobile.barricade2.R
 import com.mutualmobile.barricade2.ui.theme.ToolbarRed
 import com.mutualmobile.barricade2.utils.showToast
 
-private const val TAG = "BarricadeConfigScreen"
+object BarricadeConfigScreen {
+    const val CardRadiusPercentage = 10
+    const val SpacerPadding = 8
+    const val HorizontalPadding = 16
+    const val VerticalPadding = 4
+}
 
 @Composable
 fun BarricadeConfigScreen() {
@@ -65,12 +71,21 @@ fun BarricadeConfigScreen() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Barricade Config", color = Color.White) },
+                title = {
+                    Text(
+                        stringResource(R.string.barricadeConfigTitle),
+                        color = Color.White
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = {
                         (ctx as Activity).onBackPressed()
                     }) {
-                        Icon(Icons.Default.ArrowBack, "Go back", tint = Color.White)
+                        Icon(
+                            Icons.Default.ArrowBack,
+                            stringResource(R.string.backBtnCD),
+                            tint = Color.White
+                        )
                     }
                 },
                 actions = {
@@ -78,12 +93,20 @@ fun BarricadeConfigScreen() {
                         delayTfValue = barricade.delay
                         isDelayDialogVisible = true
                     }) {
-                        Icon(painterResource(id = R.drawable.ic_timer), "Delay", tint = Color.White)
+                        Icon(
+                            painterResource(id = R.drawable.ic_timer),
+                            stringResource(R.string.delayBtnCD),
+                            tint = Color.White
+                        )
                     }
                     IconButton(onClick = {
                         isResetDialogVisible = true
                     }) {
-                        Icon(painterResource(id = R.drawable.ic_undo), "Reset", tint = Color.White)
+                        Icon(
+                            painterResource(id = R.drawable.ic_undo),
+                            stringResource(R.string.resetBtnCD),
+                            tint = Color.White
+                        )
                     }
                 },
                 backgroundColor = ToolbarRed
@@ -99,20 +122,20 @@ fun BarricadeConfigScreen() {
                         if (barricade.delay == delayTfValue) {
                             isDelayDialogVisible = false
                         } else {
-                            ctx.showToast("Value not updated! Please try again.")
+                            ctx.showToast(ctx.resources.getString(R.string.updateFailedMsg))
                         }
                     }) {
-                        Text("Set")
+                        Text(stringResource(R.string.delayDialogConfirmBtnText))
                     }
                 },
                 dismissButton = {
                     TextButton(onClick = {
                         isDelayDialogVisible = false
                     }) {
-                        Text("Cancel")
+                        Text(stringResource(R.string.delayDialogDismissBtnText))
                     }
                 },
-                title = { Text("Delay time") },
+                title = { Text(stringResource(R.string.delayDialogTitle)) },
                 text = {
                     TextField(
                         value = delayTfValue.toString(),
@@ -139,18 +162,18 @@ fun BarricadeConfigScreen() {
                         barricadeConfigs = barricade.getConfig()
                         isResetDialogVisible = false
                     }) {
-                        Text("Yes")
+                        Text(stringResource(R.string.resetDialogConfirmBtnText))
                     }
                 },
                 dismissButton = {
                     TextButton(onClick = {
                         isResetDialogVisible = false
                     }) {
-                        Text("No")
+                        Text(stringResource(R.string.resetDialogDismissBtnText))
                     }
                 },
                 text = {
-                    Text("Are you sure you want to reset the configuration?")
+                    Text(stringResource(R.string.resetDialogMsg))
                 }
             )
         }
@@ -167,7 +190,7 @@ fun BarricadeConfigScreen() {
                         ) {
                             Card(
                                 elevation = cardElevation.dp,
-                                shape = RoundedCornerShape(10),
+                                shape = RoundedCornerShape(BarricadeConfigScreen.CardRadiusPercentage),
                                 modifier = Modifier.padding(cardElevation.dp)
                             ) {
                                 Row(
@@ -185,27 +208,27 @@ fun BarricadeConfigScreen() {
                                     Column(
                                         verticalArrangement = Arrangement.SpaceAround
                                     ) {
-                                        Spacer(modifier = Modifier.padding(top = 8.dp))
+                                        Spacer(modifier = Modifier.padding(top = BarricadeConfigScreen.SpacerPadding.dp))
                                         Text(
                                             text = config.key,
-                                            modifier = Modifier.padding(horizontal = 16.dp),
+                                            modifier = Modifier.padding(horizontal = BarricadeConfigScreen.HorizontalPadding.dp),
                                             style = MaterialTheme.typography.h6,
                                         )
                                         Text(
                                             text = defaultResponse.responseFileName,
                                             modifier = Modifier.padding(
-                                                horizontal = 16.dp,
-                                                vertical = 4.dp
+                                                horizontal = BarricadeConfigScreen.HorizontalPadding.dp,
+                                                vertical = BarricadeConfigScreen.VerticalPadding.dp
                                             ),
                                             style = MaterialTheme.typography.body2,
                                         )
-                                        Spacer(modifier = Modifier.padding(top = 8.dp))
+                                        Spacer(modifier = Modifier.padding(top = BarricadeConfigScreen.SpacerPadding.dp))
                                     }
                                     Icon(
                                         imageVector = Icons.Outlined.KeyboardArrowDown,
                                         contentDescription = null,
                                         modifier = Modifier
-                                            .padding(end = 16.dp)
+                                            .padding(end = BarricadeConfigScreen.HorizontalPadding.dp)
                                             .rotate(arrowRotation)
                                     )
                                 }
@@ -232,7 +255,7 @@ fun BarricadeConfigScreen() {
                                             Text(
                                                 response.responseFileName,
                                                 style = MaterialTheme.typography.body1,
-                                                modifier = Modifier.padding(16.dp)
+                                                modifier = Modifier.padding(BarricadeConfigScreen.HorizontalPadding.dp)
                                             )
                                         }
                                     }

@@ -1,7 +1,7 @@
-package com.mutualmobile.barricade2.data
+package com.mutualmobile.barricadeSample.data
 
 import com.mutualmobile.barricade2.annotation.Barricade
-import com.mutualmobile.barricade2.data.models.JokeResponse
+import com.mutualmobile.barricadeSample.data.models.JokeResponse
 import retrofit2.Response
 import retrofit2.http.GET
 

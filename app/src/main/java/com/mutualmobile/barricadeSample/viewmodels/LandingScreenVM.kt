@@ -1,4 +1,4 @@
-package com.mutualmobile.barricade2.viewmodels
+package com.mutualmobile.barricadeSample.viewmodels
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -6,9 +6,9 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mutualmobile.barricade2.Barricade
-import com.mutualmobile.barricade2.data.JokeApi
-import com.mutualmobile.barricade2.data.models.JokeResponse
-import com.mutualmobile.barricade2.states.ResponseState
+import com.mutualmobile.barricadeSample.data.JokeApi
+import com.mutualmobile.barricadeSample.data.models.JokeResponse
+import com.mutualmobile.barricadeSample.states.ResponseState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

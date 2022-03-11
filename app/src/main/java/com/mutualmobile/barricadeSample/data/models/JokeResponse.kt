@@ -1,4 +1,4 @@
-package com.mutualmobile.barricade2.data.models
+package com.mutualmobile.barricadeSample.data.models
 
 data class JokeResponse(
     val icon_url: String,

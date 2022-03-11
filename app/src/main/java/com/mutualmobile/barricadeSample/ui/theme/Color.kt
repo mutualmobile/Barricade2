@@ -1,4 +1,4 @@
-package com.mutualmobile.barricade2.ui.theme
+package com.mutualmobile.barricadeSample.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

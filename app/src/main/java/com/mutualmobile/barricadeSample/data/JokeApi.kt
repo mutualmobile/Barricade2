@@ -1,4 +1,4 @@
-package com.mutualmobile.barricade2.data
+package com.mutualmobile.barricadeSample.data
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

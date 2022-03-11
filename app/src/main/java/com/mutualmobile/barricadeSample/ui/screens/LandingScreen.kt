@@ -1,4 +1,4 @@
-package com.mutualmobile.barricade2.ui.screens
+package com.mutualmobile.barricadeSample.ui.screens
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -35,11 +35,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.mutualmobile.barricade2.Barricade
-import com.mutualmobile.barricade2.states.ResponseState
-import com.mutualmobile.barricade2.viewmodels.LandingScreenVM
+import com.mutualmobile.barricadeSample.R
+import com.mutualmobile.barricadeSample.states.ResponseState
+import com.mutualmobile.barricadeSample.viewmodels.LandingScreenVM
+
+object LandingScreen {
+    const val HorizontalPadding = 16
+    const val VerticalPadding = 4
+    const val RoundedCornerPercent = 15
+    const val ImageSize = 50
+}
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -55,10 +64,10 @@ fun LandingScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Barricade Sample") },
+                title = { Text(stringResource(id = R.string.app_name)) },
                 actions = {
                     IconButton(onClick = { barricade.launchConfigActivity(ctx) }) {
-                        Icon(Icons.Default.Settings, "Configuration")
+                        Icon(Icons.Default.Settings, stringResource(R.string.configBtnDesc))
                     }
                 }
             )
@@ -72,9 +81,12 @@ fun LandingScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 4.dp),
+                    .padding(
+                        horizontal = LandingScreen.HorizontalPadding.dp,
+                        vertical = LandingScreen.VerticalPadding.dp
+                    ),
             ) {
-                Text("Barricade")
+                Text(stringResource(R.string.barricade))
                 Switch(checked = isChecked, onCheckedChange = { switchChecked ->
                     landingScreenVM.setBarricadeEnabled(switchChecked)
                 })
@@ -82,12 +94,12 @@ fun LandingScreen(
             Button(onClick = {
                 landingScreenVM.fetchJoke()
             }) {
-                Text("Get Joke")
+                Text(stringResource(R.string.getJoke))
             }
             Button(onClick = {
                 landingScreenVM.fetchJokeCategories()
             }) {
-                Text("Get Joke Categories")
+                Text(stringResource(R.string.getJokeCategories))
             }
             AnimatedContent(
                 targetState = currentJokeState,
@@ -102,11 +114,11 @@ fun LandingScreen(
                     }
                     is ResponseState.Success -> {
                         Row(
-                            modifier = Modifier.padding(horizontal = 16.dp)
+                            modifier = Modifier.padding(horizontal = LandingScreen.HorizontalPadding.dp)
                         ) {
                             Card(
-                                shape = RoundedCornerShape(15),
-                                modifier = Modifier.size(50.dp)
+                                shape = RoundedCornerShape(LandingScreen.RoundedCornerPercent),
+                                modifier = Modifier.size(LandingScreen.ImageSize.dp)
                             ) {
                                 AsyncImage(
                                     model = jokeState.data.icon_url,
@@ -117,7 +129,10 @@ fun LandingScreen(
                             }
                             Text(
                                 jokeState.data.value,
-                                modifier = Modifier.padding(horizontal = 8.dp)
+                                modifier = Modifier
+                                    .padding(
+                                        horizontal = LandingScreen.HorizontalPadding.div(2).dp
+                                    )
                             )
                         }
                     }
@@ -141,14 +156,16 @@ fun LandingScreen(
                         LazyColumn(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 16.dp),
+                                .padding(horizontal = LandingScreen.HorizontalPadding.dp),
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             categoryState.data.forEach { jokeCategory ->
                                 item {
                                     Text(
                                         jokeCategory,
-                                        modifier = Modifier.padding(horizontal = 8.dp)
+                                        modifier = Modifier.padding(
+                                            horizontal = LandingScreen.HorizontalPadding.div(2).dp
+                                        )
                                     )
                                 }
                             }
