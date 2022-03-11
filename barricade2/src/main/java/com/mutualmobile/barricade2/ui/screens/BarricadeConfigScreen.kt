@@ -60,6 +60,7 @@ fun BarricadeConfigScreen() {
     var isDelayDialogVisible by remember { mutableStateOf(false) }
     var isResetDialogVisible by remember { mutableStateOf(false) }
     var delayTfValue by remember { mutableStateOf(barricade.delay) }
+    var barricadeConfigs = remember { barricade.getConfig() }
 
     Scaffold(
         topBar = {
@@ -135,6 +136,7 @@ fun BarricadeConfigScreen() {
                 confirmButton = {
                     TextButton(onClick = {
                         barricade.reset()
+                        barricadeConfigs = barricade.getConfig()
                         isResetDialogVisible = false
                     }) {
                         Text("Yes")
@@ -153,7 +155,7 @@ fun BarricadeConfigScreen() {
             )
         }
         LazyColumn {
-            barricade.getConfig().forEach { config ->
+            barricadeConfigs.forEach { config ->
                 item {
                     config.value.responses[config.value.defaultIndex].let { defaultResponse ->
                         var isRowExpanded by remember { mutableStateOf(false) }
