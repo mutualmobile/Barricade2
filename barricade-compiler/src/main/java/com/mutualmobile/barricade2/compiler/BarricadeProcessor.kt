@@ -31,7 +31,10 @@ class BarricadeProcessor(
         if (!symbols.iterator().hasNext()) return emptyList()
 
         val file: OutputStream = codeGenerator.createNewFile(
-            dependencies = Dependencies(aggregating = false),
+            dependencies = Dependencies(
+                aggregating = false,
+                *resolver.getAllFiles().toList().toTypedArray()
+            ),
             packageName = PACKAGE_NAME,
             fileName = GENERATED_FILE_NAME
         )
