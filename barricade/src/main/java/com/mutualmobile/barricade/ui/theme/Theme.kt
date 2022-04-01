@@ -1,4 +1,4 @@
-package com.mutualmobile.barricadeSample.ui.theme
+package com.mutualmobile.barricade.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mutualmobile.barricade2.Barricade
+import com.mutualmobile.barricade.Barricade
 import com.mutualmobile.barricadeSample.data.JokeApi
 import com.mutualmobile.barricadeSample.data.models.JokeResponse
 import com.mutualmobile.barricadeSample.states.ResponseState

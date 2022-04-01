@@ -2,7 +2,7 @@ package com.mutualmobile.barricadeSample.data
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.mutualmobile.barricade2.BarricadeInterceptor
+import com.mutualmobile.barricade.BarricadeInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

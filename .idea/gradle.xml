@@ -11,9 +11,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/barricade" />
             <option value="$PROJECT_DIR$/barricade-annotations" />
             <option value="$PROJECT_DIR$/barricade-compiler" />
-            <option value="$PROJECT_DIR$/barricade2" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -38,7 +38,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.mutualmobile.barricade2.Barricade
+import com.mutualmobile.barricade.Barricade
 import com.mutualmobile.barricadeSample.R
 import com.mutualmobile.barricadeSample.states.ResponseState
 import com.mutualmobile.barricadeSample.viewmodels.LandingScreenVM

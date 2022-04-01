@@ -17,8 +17,8 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Barricade2"
+rootProject.name = "Barricade"
 include ':app'
-include ':barricade2'
+include ':barricade'
 include ':barricade-annotations'
 include ':barricade-compiler'
