@@ -5,6 +5,7 @@ pluginManagement {
         id 'org.jetbrains.kotlin.android' version '1.5.21'
     }
     repositories {
+        mavenLocal()
         gradlePluginPortal()
         google()
         mavenCentral()

@@ -67,3 +67,8 @@ dependencies {
 
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.3-alpha"
 }
+
+apply from: '../publish-helper.gradle'
+tasks.withType(Javadoc).all {
+    enabled = false
+}
