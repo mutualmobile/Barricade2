@@ -61,7 +61,7 @@ afterEvaluate {
                 artifact androidJavadocJar
                 artifact javaSourcesJar
 
-                groupId 'com.mutualmobile.barricade2'
+                groupId 'com.mutualmobile'
                 version '0.0.1'
                 pom {
                     name = artifactId

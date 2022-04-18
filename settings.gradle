@@ -20,6 +20,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Barricade"
 include ':app'
-include ':barricade'
+include ':barricade2'
 include ':barricade-annotations'
 include ':barricade-compiler'
