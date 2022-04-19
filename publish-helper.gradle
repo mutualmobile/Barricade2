@@ -1,4 +1,5 @@
 apply plugin: 'maven-publish'
+apply plugin: 'signing'
 
 task androidJavadoc(type: Javadoc) {
     if (plugins.hasPlugin('android-library')) {
@@ -88,4 +89,8 @@ afterEvaluate {
             }
         }
     }
+}
+
+signing {
+    sign publishing.publications
 }
