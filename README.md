@@ -29,9 +29,27 @@ It also supports multiple responses per request, unlike other local server imple
 Include the following dependencies in your app's build.gradle :
 
 ```
+def barricadeVersion = "0.0.1"
 dependencies {
-    implementation ("com.mutualmobile:barricade2:0.1.8")
-    ksp ("com.mutualmobile:barricade-compiler2:0.1.8")
+    implementation ("com.mutualmobile:barricade2:$barricadeVersion")
+    ksp ("com.mutualmobile:barricade-compiler2:$barricadeVersion")
+}
+```
+
+Since Barricade2 internally uses [Kotlin Symbol Processing (KSP)](https://kotlinlang.org/docs/ksp-overview.html#:~:text=Kotlin%20Symbol%20Processing%20(KSP)%20is,up%20to%202%20times%20faster.) and generates Config classes for us, therefore we also need to include the sourceSets it generates the files into in order to make them visible to our codebase.
+We can do that by including the following inside the `android` block in the app-level build gradle (or wherever we've put the dependencies in the step above) i.e.
+
+```
+android {
+    ...
+    sourceSets {
+        debug {
+            kotlin { srcDir(file("build/generated/ksp/debug/kotlin")) }
+        }
+        release {
+            kotlin { srcDir(file("build/generated/ksp/release/kotlin")) }
+        }
+    }
 }
 ```
 
@@ -40,12 +58,13 @@ dependencies {
 1. Install Barricade in your `Application` class' `#onCreate()`
 
   ```
-  @Override
-  public void onCreate() {
-      super.onCreate();
-      Barricade.Builder(this, BarricadeConfig()).install()
-      ...
-  }
+  override fun onCreate() {
+        super.onCreate()
+        Barricade.Builder(this, BarricadeConfig.getInstance())
+            .enableShakeToStart(this)
+            .install()
+            ...
+    }
   ```
 
 2. Add your API response files to `assets/barricade/` for each type of response (success, invalid, error etc). You should consider creating subdirectories for each endpoint and putting the responses in them to organise them properly.
