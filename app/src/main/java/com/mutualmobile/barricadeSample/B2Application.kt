@@ -7,6 +7,8 @@ import com.mutualmobile.barricade.BarricadeConfig
 class B2Application : Application() {
     override fun onCreate() {
         super.onCreate()
-        Barricade.Builder(this, BarricadeConfig.getInstance()).install()
+        Barricade.Builder(this, BarricadeConfig.getInstance())
+            .enableShakeToStart(this)
+            .install()
     }
 }

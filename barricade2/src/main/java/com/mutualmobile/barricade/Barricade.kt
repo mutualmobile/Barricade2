@@ -1,11 +1,13 @@
 package com.mutualmobile.barricade
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import com.mutualmobile.barricade.Barricade.Builder
 import com.mutualmobile.barricade.utils.AndroidAssetFileManager
 import com.mutualmobile.barricade.utils.AssetFileManager
+import com.mutualmobile.barricade.utils.BarricadeShakeListener
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Protocol
@@ -59,8 +61,14 @@ class Barricade private constructor(
     ) {
         private var delay: Long = DEFAULT_DELAY
         private var assetFileManager = AndroidAssetFileManager(context)
+        private var application: Application? = null
 
         fun setDelay(delay: Long) = apply { this.delay = delay }
+
+        fun enableShakeToStart(application: Application): Builder {
+            this.application = application
+            return this
+        }
 
         fun install() {
             instance?.let {
@@ -71,6 +79,9 @@ class Barricade private constructor(
                     fileManager = assetFileManager
                 )
                 instance?.delay = delay
+                application?.let { nnApplication ->
+                    BarricadeShakeListener(application = nnApplication)
+                }
             }
         }
     }
