@@ -124,6 +124,13 @@ Barricade.getInstance()
 **Note:** Using the above technique will also save the settings and apply to other responses as well, not just the
 next response, until changed.
 
+#### Migration from Barricade1
+If you're planning to migrate to Barricade2 from the older version(s) of [Barricade](https://github.com/mutualmobile/Barricade),
+you might want to take into consideration that Barricade2 has completely been rewritten in Kotlin
+(which might not be feasible for Java-only projects) and has
+its own set of dependencies. Therefore, you will have to [include the new dependencies](https://github.com/mutualmobile/Barricade2/tree/setup/readme#adding-barricade-to-your-project)
+and remove the old ones from your project now (again, only if you plan to or already use Kotlin).
+
 License
 -------
 
