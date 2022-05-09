@@ -1,4 +1,6 @@
 # Barricade2
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/mutualmobile/Barricade2?label=version)
+
 Barricade is a library for Android apps that allows you to get responses to API requests locally by running a local server. Barricade will intercept your API calls using an OkHttp Network Interceptor and can provide a local response from a local file.
 
 It also supports multiple responses per request, unlike other local server implementations and presents the user with an UI for modifying which response to return for a request. at runtime.
@@ -29,7 +31,7 @@ It also supports multiple responses per request, unlike other local server imple
 Include the following dependencies in your app's build.gradle :
 
 ```
-def barricadeVersion = "0.0.1"
+def barricadeVersion = "0.0.1" // Get the latest version from tags
 dependencies {
     implementation ("com.mutualmobile:barricade2:$barricadeVersion")
     ksp ("com.mutualmobile:barricade-compiler2:$barricadeVersion")
