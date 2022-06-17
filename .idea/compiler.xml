@@ -3,8 +3,8 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="Barricade.app" target="11" />
-      <module name="Barricade.barricade" target="11" />
       <module name="Barricade.barricade-compiler" target="1.8" />
+      <module name="Barricade.barricade2" target="11" />
       <module name="Barricade2.app" target="11" />
       <module name="Barricade2.barricade-compiler" target="1.8" />
       <module name="Barricade2.barricade2" target="11" />

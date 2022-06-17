@@ -5,6 +5,7 @@ pluginManagement {
         id 'org.jetbrains.kotlin.android' version '1.5.21'
     }
     repositories {
+        mavenLocal()
         gradlePluginPortal()
         google()
         mavenCentral()
@@ -19,6 +20,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Barricade"
 include ':app'
-include ':barricade'
+include ':barricade2'
 include ':barricade-annotations'
 include ':barricade-compiler'
