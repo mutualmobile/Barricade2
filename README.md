@@ -33,6 +33,7 @@ Include the following dependencies in your app's build.gradle :
 ```
 def barricadeVersion = "0.0.1" // Get the latest version from tags
 dependencies {
+    implementation ("om.mutualmobile:barricade-annotations:0.1.1")
     implementation ("com.mutualmobile:barricade2:$barricadeVersion")
     ksp ("com.mutualmobile:barricade-compiler:$barricadeVersion")
 }
@@ -63,7 +64,6 @@ android {
   override fun onCreate() {
         super.onCreate()
         Barricade.Builder(this, BarricadeConfig.getInstance())
-            .enableShakeToStart(this)
             .install()
             ...
     }
