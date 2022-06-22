@@ -8,6 +8,7 @@ import retrofit2.http.GET
 interface ApiService {
     @GET("/jokes/random")
     @Barricade(
+        endpoint = "random",
         responses = [
             com.mutualmobile.barricade.annotation.Response(
                 fileName = "success.json",
@@ -22,5 +23,14 @@ interface ApiService {
     suspend fun getRandomJoke(): Response<JokeResponse>
 
     @GET("/jokes/categories")
+    @Barricade(
+        endpoint = "categories",
+        responses = [
+            com.mutualmobile.barricade.annotation.Response(
+                fileName = "success.json",
+                isDefault = true
+            )
+        ]
+    )
     suspend fun getJokeCategories(): Response<List<String>>
 }

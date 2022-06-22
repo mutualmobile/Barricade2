@@ -34,13 +34,17 @@ class BarricadeVisitor(
             (it as KSAnnotation).arguments
         }
 
+        file writeToFile "\t\tval barricadeResponsesFor$endpoint = mutableListOf<com.mutualmobile.barricade.response.BarricadeResponse>()\n"
+
         responses.forEach { response ->
             val fileName = response.first { it.name?.asString() == Response::fileName.name }.value as String
             val isDefault = response.first { it.name?.asString() == Response::isDefault.name }.value as Boolean
             val statusCode = response.first { it.name?.asString() == Response::statusCode.name }.value as Int
             val type = response.first { it.name?.asString() == Response::type.name }.value as String
-            file writeToFile "\t\tbarricadeResponsesForRandom.add(${BarricadeProcessor.PACKAGE_NAME}.response.BarricadeResponse($statusCode, \"$fileName\", \"$type\"))\n"
+            file writeToFile "\t\tbarricadeResponsesFor$endpoint.add(${BarricadeProcessor.PACKAGE_NAME}.response.BarricadeResponse($statusCode, \"$fileName\", \"$type\"))\n"
             logger.info("Found args: $fileName, $isDefault, $statusCode, $type")
         }
+        file writeToFile "\t\tconfigs.put(\"$endpoint\", com.mutualmobile.barricade.response.BarricadeResponseSet(barricadeResponsesFor$endpoint, 0))\n"
+
     }
 }
