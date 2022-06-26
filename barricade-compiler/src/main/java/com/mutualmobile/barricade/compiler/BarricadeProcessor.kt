@@ -64,11 +64,9 @@ class BarricadeProcessor(
 
         file writeToFile "\tprivate val configs = hashMapOf<String, $PACKAGE_NAME.response.BarricadeResponseSet>()\n\n"
         file writeToFile "\tinit {\n"
-        file writeToFile "\t\tval barricadeResponsesForRandom = mutableListOf<com.mutualmobile.barricade.response.BarricadeResponse>()\n"
         symbols.forEach { symbol ->
             symbol.accept(BarricadeVisitor(file, logger), Unit)
         }
-        file writeToFile "\t\tconfigs.put(\"random\", com.mutualmobile.barricade.response.BarricadeResponseSet(barricadeResponsesForRandom, 0))\n"
         file writeToFile "\t}\n\n"
         file writeToFile "\toverride fun getConfigs(): HashMap<String, $PACKAGE_NAME.response.BarricadeResponseSet> = configs\n"
         file writeToFile "\toverride fun getResponseForEndpoint(endpoint: String): $PACKAGE_NAME.response.BarricadeResponse? {\n"
