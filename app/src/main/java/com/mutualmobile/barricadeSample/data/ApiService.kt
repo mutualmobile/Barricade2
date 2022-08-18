@@ -29,6 +29,10 @@ interface ApiService {
             com.mutualmobile.barricade.annotation.Response(
                 fileName = "success.json",
                 isDefault = true
+            ),
+            com.mutualmobile.barricade.annotation.Response(
+                fileName = "failure.json",
+                statusCode = 404
             )
         ]
     )

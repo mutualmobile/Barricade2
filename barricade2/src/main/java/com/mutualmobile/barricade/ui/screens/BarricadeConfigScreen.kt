@@ -239,6 +239,7 @@ fun BarricadeConfigScreen() {
                                 exit = fadeOut() + slideOutVertically()
                             ) {
                                 Column {
+                                    val endpoint = config.key
                                     config.value.responses.forEachIndexed { index, response ->
                                         Row(
                                             modifier = Modifier
@@ -248,7 +249,7 @@ fun BarricadeConfigScreen() {
                                                     interactionSource = remember { MutableInteractionSource() },
                                                     indication = rememberRipple()
                                                 ) {
-                                                    barricade.setResponse("random", index)
+                                                    barricade.setResponse(endpoint, index)
                                                     isRowExpanded = false
                                                 }
                                         ) {
