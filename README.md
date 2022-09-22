@@ -1,5 +1,4 @@
-# Barricade2
-![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/mutualmobile/Barricade2?label=version)
+# Barricade2 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/mutualmobile/Barricade2?label=version)
 
 Barricade is a library for Android apps that allows you to get responses to API requests locally by running a local server. Barricade will intercept your API calls using an OkHttp Network Interceptor and can provide a local response from a local file.
 
@@ -28,7 +27,7 @@ It also supports multiple responses per request, unlike other local server imple
 
 ## Adding Barricade to your project
 
-Include the following dependencies in your app's build.gradle :
+Include the following dependencies in your app's build.gradle (the latest version is ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/mutualmobile/Barricade2?label=version)) :
 
 ```
 def barricadeVersion = "0.0.3" // Get the latest version from tags
@@ -129,7 +128,7 @@ next response, until changed.
 If you're planning to migrate to Barricade2 from the older version(s) of [Barricade](https://github.com/mutualmobile/Barricade),
 you might want to take into consideration that Barricade2 has completely been rewritten in Kotlin
 (which might not be feasible for Java-only projects) and has
-its own set of dependencies. Therefore, you will have to [include the new dependencies](https://github.com/mutualmobile/Barricade2/tree/setup/readme#adding-barricade-to-your-project)
+its own set of dependencies. Therefore, you will have to [include the new dependencies](https://github.com/mutualmobile/Barricade2#adding-barricade-to-your-project)
 and remove the old ones from your project now (again, only if you plan to or already use Kotlin).
 
 License
