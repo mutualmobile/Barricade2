@@ -63,7 +63,7 @@ afterEvaluate {
                 artifact javaSourcesJar
 
                 groupId 'com.mutualmobile'
-                version '0.0.3'
+                version '0.0.4'
                 pom {
                     name = artifactId
                     description = 'Runtime configurable local server for Android apps.'
