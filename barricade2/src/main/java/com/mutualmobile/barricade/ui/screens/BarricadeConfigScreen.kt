@@ -112,8 +112,13 @@ fun BarricadeConfigScreen() {
                 backgroundColor = ToolbarRed
             )
         }
-    ) {
-        AnimatedVisibility(visible = isDelayDialogVisible, enter = fadeIn(), exit = fadeOut()) {
+    ) { padding ->
+        AnimatedVisibility(
+            modifier = Modifier.padding(padding),
+            visible = isDelayDialogVisible,
+            enter = fadeIn(),
+            exit = fadeOut()
+        ) {
             AlertDialog(
                 onDismissRequest = { isDelayDialogVisible = false },
                 confirmButton = {
