@@ -1,6 +1,6 @@
 package com.mutualmobile.barricade.ui.screens
 
-import android.app.Activity
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
@@ -62,6 +62,7 @@ object BarricadeConfigScreen {
 @Composable
 fun BarricadeConfigScreen() {
     val ctx = LocalContext.current
+    val onBackPressedDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
     val barricade by remember { mutableStateOf(Barricade.getInstance()) }
     var isDelayDialogVisible by remember { mutableStateOf(false) }
     var isResetDialogVisible by remember { mutableStateOf(false) }
@@ -78,9 +79,11 @@ fun BarricadeConfigScreen() {
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = {
-                        (ctx as Activity).onBackPressed()
-                    }) {
+                    IconButton(
+                        onClick = {
+                            onBackPressedDispatcher?.onBackPressed()
+                        }
+                    ) {
                         Icon(
                             Icons.Default.ArrowBack,
                             stringResource(R.string.backBtnCD),

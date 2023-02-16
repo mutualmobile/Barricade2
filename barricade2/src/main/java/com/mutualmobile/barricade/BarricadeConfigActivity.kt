@@ -2,6 +2,7 @@ package com.mutualmobile.barricade
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.addCallback
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
@@ -31,10 +32,10 @@ class BarricadeConfigActivity : ComponentActivity() {
                 }
             }
         }
-    }
 
-    override fun onBackPressed() {
-        finishAndRemoveTask()
-        super.onBackPressed()
+        onBackPressedDispatcher.addCallback(this) {
+            finishAndRemoveTask()
+            finish()
+        }
     }
 }
