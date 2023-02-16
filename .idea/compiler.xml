@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.7">
+    <bytecodeTargetLevel target="1.8">
       <module name="Barricade.app" target="11" />
-      <module name="Barricade.barricade-compiler" target="1.8" />
-      <module name="Barricade.barricade-compiler.main" target="1.8" />
-      <module name="Barricade.barricade-compiler.test" target="1.8" />
       <module name="Barricade.barricade2" target="11" />
       <module name="Barricade2.app" target="11" />
       <module name="Barricade2.barricade-compiler" target="1.8" />
