@@ -15,10 +15,10 @@ updates:
       - "niketmm"
       - "Adi-MMandroid"
       - "swap-musale"
-      reviewers:
-        - "jsboya"
-        - "pushpalroymm"
-        - "aditya-bhawsar-mm"
-        - "shubhamsinghmutualmobile"
-        - "shreyansh-mm"
-        - "vineetMM"
+    reviewers:
+      - "jsboya"
+      - "pushpalroymm"
+      - "aditya-bhawsar-mm"
+      - "shubhamsinghmutualmobile"
+      - "shreyansh-mm"
+      - "vineetMM"
