@@ -9,16 +9,5 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-    assignees:
-      - "avidraghav"
-      - "pranay-mm"
-      - "niketmm"
-      - "Adi-MMandroid"
-      - "swap-musale"
     reviewers:
-      - "jsboya"
-      - "pushpalroymm"
-      - "aditya-bhawsar-mm"
       - "shubhamsinghmutualmobile"
-      - "shreyansh-mm"
-      - "vineetMM"
