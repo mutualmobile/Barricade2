@@ -1,9 +1,4 @@
 pluginManagement {
-    plugins {
-        id("com.google.devtools.ksp") version "1.8.10-1.0.9"
-        id 'org.jetbrains.kotlin.jvm'
-        id 'org.jetbrains.kotlin.android' version '1.8.10'
-    }
     repositories {
         mavenLocal()
         gradlePluginPortal()
@@ -19,7 +14,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Barricade"
-include ':app'
-include ':barricade2'
-include ':barricade-annotations'
-include ':barricade-compiler'
+include ":app"
+include ":barricade2"
+include ":barricade-annotations"
+include ":barricade-compiler"

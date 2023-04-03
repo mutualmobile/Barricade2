@@ -30,7 +30,7 @@ It also supports multiple responses per request, unlike other local server imple
 Include the following dependencies in your app's build.gradle (the latest version is ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/mutualmobile/Barricade2?label=version)) :
 
 ```
-def barricadeVersion = "0.0.3" // Get the latest version from tags
+def barricadeVersion = "0.0.4" // Get the latest version from tags
 dependencies {
     implementation ("com.mutualmobile:barricade2:$barricadeVersion")
     implementation ("com.mutualmobile:barricade-annotations:$barricadeVersion")

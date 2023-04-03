@@ -1,16 +1,15 @@
 plugins {
-    id 'java-library'
-    id 'org.jetbrains.kotlin.jvm'
+    id("java-library")
+    id("org.jetbrains.kotlin.jvm")
+    id("com.vanniktech.maven.publish")
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 dependencies {
     implementation(project(":barricade-annotations"))
-    implementation("com.google.devtools.ksp:symbol-processing-api:1.8.10-1.0.9")
+    implementation("com.google.devtools.ksp:symbol-processing-api:$ksp_version")
 }
-
-apply from: '../publish-helper.gradle'

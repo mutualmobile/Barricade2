@@ -1,58 +1,31 @@
 buildscript {
     ext {
-        compose_version = '1.4.2'
+        compose_version = "1.4.0"
+        compose_compiler_version = "1.4.4"
+        compose_activity_version = "1.7.0"
+        ksp_version = "1.8.10-1.0.9"
+        maven_publish_version = "0.25.1"
+        kotlin_version = "1.8.10"
+        android_gradle_version = "7.4.2"
+        core_ktx_version = "1.9.0"
+        lifecycle_runtime_ktx_version = "2.6.1"
+        junit_core_version = "4.13.2"
+        junit_android_version = "1.1.5"
+        espresso_version = "3.5.1"
+        retrofit_version = "2.9.0"
+        retrofit_logging_interceptor_version = "4.10.0"
+        coil_compose_version = "2.2.2"
+        appcompat_version = "1.6.1"
+        material_version = "1.8.0"
+        okhttp_bom_version = "4.9.3"
+        accompanist_version = "0.29.1-alpha"
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id 'com.android.application' version '7.4.1' apply false
-    id 'com.android.library' version '7.4.1' apply false
-    id 'org.jetbrains.kotlin.android' version '1.8.10' apply false
-    id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
-
-// Initialize publishing/signing extra properties with environmental vars
-ext['signing.keyId'] = System.getenv('SIGNING_KEY_ID') ?: ''
-ext['signing.password'] = System.getenv('SIGNING_PASSWORD') ?: ''
-ext['signing.secretKeyRingFile'] = System.getenv('SIGNING_SECRET_KEY_RING_FILE') ?: ''
-ext['ossrhUsername'] = System.getenv('OSSRH_USERNAME') ?: ''
-ext['ossrhPassword'] = System.getenv('OSSRH_PASSWORD') ?: ''
-// Override with local.properties if available
-File secretPropsFile = project.rootProject.file('local.properties')
-if (secretPropsFile.exists()) {
-    Properties p = new Properties()
-    p.load(new FileInputStream(secretPropsFile))
-    p.each { name, value ->
-        ext[name] = value
-    }
-}
-
-def pgpKeyContent = System.getenv('PGP_KEY_CONTENTS')
-if (pgpKeyContent != null) {
-    def tmpDir = new File("$rootProject.rootDir/tmp")
-    mkdir tmpDir
-    def keyFile = new File("$tmpDir/key.pgp")
-    keyFile.createNewFile()
-    def os = keyFile.newDataOutputStream()
-    os.write(pgpKeyContent.decodeBase64())
-    os.close()
-    pgpKeyContent = ''
-
-    ext['signing.secretKeyRingFile'] = keyFile.absolutePath
-}
-
-nexusPublishing {
-    repositories {
-        sonatype {
-            stagingProfileId = "21d06a31472b96"
-            nexusUrl.set(uri("https://oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://oss.sonatype.org/content/repositories/snapshots/"))
-            username = ossrhUsername
-            password = ossrhPassword
-            version = ''
-        }
-    }
+    id("com.android.application") version "$android_gradle_version" apply false
+    id("com.android.library") version "$android_gradle_version" apply false
+    id("org.jetbrains.kotlin.jvm") version "$kotlin_version" apply false
+    id("org.jetbrains.kotlin.android") version "$kotlin_version" apply false
+    id("com.vanniktech.maven.publish") version "$maven_publish_version" apply false
+    id("com.google.devtools.ksp") version "$ksp_version" apply false
 }
