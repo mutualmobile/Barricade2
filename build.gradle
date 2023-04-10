@@ -3,7 +3,7 @@ buildscript {
         compose_version = "1.4.0"
         compose_compiler_version = "1.4.4"
         compose_activity_version = "1.7.0"
-        ksp_version = "1.8.10-1.0.9"
+        ksp_version = "1.8.20-1.0.10"
         maven_publish_version = "0.25.1"
         kotlin_version = "1.8.10"
         android_gradle_version = "7.4.2"
